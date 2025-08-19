@@ -24,12 +24,13 @@ public:
     }
     int lowerBound(vector<int> &nums, int x)
     {
-        // for(int i=0;i<nums.size();i++){
-        //     if(nums[i]>=x){
-        //         return i;
-        //     }
-        // }
-        // return nums.size();
+        // O(N)
+        //  for(int i=0;i<nums.size();i++){
+        //      if(nums[i]>=x){
+        //          return i;
+        //      }
+        //  }
+        //  return nums.size();
 
         return checkLowerBound(nums, 0, x, nums.size() - 1);
     }
