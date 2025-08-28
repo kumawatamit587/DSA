@@ -49,6 +49,40 @@ public:
         mergenums(nums, mid + 1, high);
         merge(nums, low, mid, high);
     }
+    //////////////////
+
+    int partition(vector<int> &arr, int low, int high)
+    {
+        int pivot = arr[low];
+        int i = low;
+        int j = high;
+
+        while (i < j)
+        {
+            while (arr[i] <= pivot && i <= high - 1)
+            {
+                i++;
+            }
+
+            while (arr[j] > pivot && j >= low + 1)
+            {
+                j--;
+            }
+            if (i < j)
+                swap(arr[i], arr[j]);
+        }
+        swap(arr[low], arr[j]);
+        return j;
+    }
+    void quickSort(vector<int> &nums, int low, int high)
+    {
+        if (low < high)
+        {
+            int pIdx = partition(nums, low, high);
+            quickSort(nums, low, pIdx - 1);
+            quickSort(nums, pIdx + 1, high);
+        }
+    }
 };
 int main()
 {
@@ -106,7 +140,13 @@ int main()
     // }
 
     // Merge Sort
-    myObj.mergenums(nums, 0, nums.size() - 1);
+    // myObj.mergenums(nums, 0, nums.size() - 1);
+
+    // Quick Sort
+    int low = 0;
+    int high = nums.size() - 1;
+
+    myObj.quickSort(nums, low, high);
     for (int i = 0; i < nums.size(); i++)
     {
         cout << nums[i];
